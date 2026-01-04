@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>David Hruška – osobní stránka</title>
+
+  <meta name="description" content="One-page web." />
+  <meta name="author" content="David Hruška" />
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-light: #141414;
+      --text: #e5e5e5;
+      --muted: #a3a3a3;
+      --border: #262626;
+      --accent: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 8rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    p { color: var(--muted); }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      transition: background 0.2s ease;
+    }
+
+    a:hover { background: var(--bg-light); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .skills {
+      background: var(--bg-light);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    footer {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <h1 id="hero-title">David Hruška</h1>
+  <p class="fade-up">One-page web.</p>
+</section>
+
+<section id="about">
+  <div class="container grid">
+    <div class="fade-up">
+      <h2>O mně</h2>
+      <p>Jsem student, který se učí programovat různé programy a tvořit webové stránky. Tahle stránka je ukázka toho co zatím umím.</p>
+    </div>
+    <div class="card fade-up">
+      <ul>
+        <li>Role: Student</li>
+        <li>Zaměření: Základy webu a programování</li>
+        <li>Stack: Python, HTML, CSS, JS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="skills">
+  <div class="container">
+    <h2 class="fade-up">Dovednosti</h2>
+    <div class="skills-grid">
+      <div class="card fade-up">HTML</div>
+      <div class="card fade-up">CSS</div>
+      <div class="card fade-up">JS</div>
+      <div class="card fade-up">Python</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container fade-up" style="text-align:center; max-width:700px">
+    <h2>Co chci dál</h2>
+    <p>Chci se dál zlepšovat ve programování, webovém vývoji a postupně dělat složitější projekty.</p>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const hero = document.getElementById('hero-title');
+  hero.style.opacity = 0;
+  hero.style.transform = 'translateY(60px)';
+
+  window.addEventListener('load', () => {
+    hero.style.transition = 'all 1.2s ease';
+    hero.style.opacity = 1;
+    hero.style.transform = 'translateY(0)';
+  });
+</script>
+
+</body>
+</html>
