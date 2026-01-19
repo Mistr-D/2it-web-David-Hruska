@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>David Hruška – osobní stránka</title>
 
-  <meta name="description" content="Jednoduchá osobní one-page stránka studenta webového vývoje." />
+  <meta name="description" content="Jednoduchá osobní one-page studenta webového vývoje." />
   <meta name="author" content="David Hruška" />
 
   <style>
@@ -33,7 +33,6 @@
       overflow-x: hidden;
     }
 
-    /* ANIMOVANÉ POZADÍ - CIRCLE PATTERN */
     body::before {
       content: "";
       position: fixed;
@@ -185,7 +184,6 @@
       b.style.borderColor = isLight ? 'var(--border-dark)' : 'var(--border-light)';
     });
 
-    // update animated circles color for visibility
     document.body.style.setProperty('--grid-dark', isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)');
 
     toggle.textContent = isLight ? '🌙' : '☀️';
